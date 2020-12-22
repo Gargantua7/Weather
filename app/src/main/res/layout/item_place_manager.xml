@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        android:id="@+id/item_place_manager_card"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/clear_day"
+        app:cardCornerRadius="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/manger_item_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5"/>
+
+        <TextView android:id="@+id/manager_item_place_name"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginHorizontal="20dp"
+                  android:text="@string/place_name"
+                  android:textColor="@color/white"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintBottom_toTopOf="@id/manger_item_line"/>
+
+        <TextView android:id="@+id/manger_item_aqi"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginHorizontal="20dp"
+                  android:text="@string/aqi"
+                  android:textColor="@color/white"
+                  android:textSize="16sp"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/manger_item_line"/>
+
+        <TextView android:id="@+id/manger_item_temp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginHorizontal="10dp"
+                  android:text="@string/dayTemp"
+                  android:textColor="@color/white"
+                  android:textSize="16sp"
+                  app:layout_constraintLeft_toRightOf="@id/manger_item_aqi"
+                  app:layout_constraintTop_toBottomOf="@id/manger_item_line"/>
+
+        <TextView android:id="@+id/manager_item_realtime_temp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/temp_num"
+                  android:textColor="@color/white"
+                  android:textSize="48sp"
+                  android:textStyle="bold"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintRight_toLeftOf="@id/manager_item_temp_symbol"/>
+
+        <TextView android:id="@+id/manager_item_temp_symbol"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginHorizontal="20dp"
+                  android:text="@string/temp_symbol"
+                  android:textColor="@color/white"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toTopOf="@+id/manger_item_line"
+                  app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

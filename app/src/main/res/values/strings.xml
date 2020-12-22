@@ -1,3 +1,84 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="enter_place">输入地址</string>
+    <string name="cancel">取消</string>
+    <string name="background">background</string>
+    <string name="place_name">东莞</string>
+    <string name="icon">图标</string>
+    <string name="temperature">25℃</string>
+    <string name="sunny">晴</string>
+    <string name="temp_num">25</string>
+    <string name="temp_symbol">℃</string>
+    <string name="aqi">空气</string>
+    <string name="day_text">今天 · 晴</string>
+    <string name="dayTemp">25 / 30 ℃</string>
+
+    <string name="today">今天</string>
+    <string name="tomorrow">明天</string>
+    <string name="day_after_tomorrow">后天</string>
+
+    <string name="aqi_great">优</string>
+    <string name="aqi_good">良</string>
+    <string name="aqi_light">轻度污染</string>
+    <string name="aqi_moderate">中度污染</string>
+    <string name="aqi_severe">重度污染</string>
+
+    <string name="sun">周日</string>
+    <string name="mon">周一</string>
+    <string name="tue">周二</string>
+    <string name="wed">周三</string>
+    <string name="thu">周四</string>
+    <string name="fri">周五</string>
+    <string name="sat">周六</string>
+    <string name="now">现在</string>
+
+    <string name="wind_speed">级</string>
+
+    <string name="coldrisk">易感程度</string>
+    <string name="dressing">穿衣指数</string>
+    <string name="ultraviolet">紫外线强度</string>
+    <string name="carwashing">洗车指数</string>
+
+    <string name="wind_north">北风</string>
+    <string name="wind_north_east">东北风</string>
+    <string name="wind_east">东风</string>
+    <string name="wind_south_east">东南风</string>
+    <string name="wind_south">南风</string>
+    <string name="wind_south_west">西南风</string>
+    <string name="wind_west">西风</string>
+    <string name="wind_west_north">西北风</string>
+
+    <string name="humidity">湿度</string>
+    <string name="apparent_temperature">体感</string>
+    <string name="pressure">气压</string>
+
+    <string name="daily_ultraviolet1">最弱</string>
+    <string name="daily_ultraviolet2">弱</string>
+    <string name="daily_ultraviolet3">中等</string>
+    <string name="daily_ultraviolet4">强</string>
+    <string name="daily_ultraviolet5">很强</string>
+
+    <string name="dressing0">极热</string>
+    <string name="dressing1">极热</string>
+    <string name="dressing2">很热</string>
+    <string name="dressing3">热</string>
+    <string name="dressing4">温暖</string>
+    <string name="dressing5">凉爽</string>
+    <string name="dressing6">冷</string>
+    <string name="dressing7">寒冷</string>
+    <string name="dressing8">极冷</string>
+
+    <string name="coldRisk1">少发</string>
+    <string name="coldRisk2">较易发</string>
+    <string name="coldRisk3">易发</string>
+    <string name="coldRisk4">极易发</string>
+
+    <string name="carWashing1">适宜</string>
+    <string name="carWashing2">较适宜</string>
+    <string name="carWashing3">较不适宜</string>
+    <string name="carWashing4">不适宜</string>
+
+    <string name="dataFrom">天气数据来源于 彩云天气</string>
+    <string name="topic">如果你看到了本提示，请下拉刷新获取数据</string>
+    <string name="city_manager">城市管理</string>
 </resources>

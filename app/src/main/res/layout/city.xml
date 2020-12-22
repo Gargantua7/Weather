@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/clear_day">
+
+        <pers.gargantua.weather.ui.view.MyScrollView
+                android:id="@+id/weatherLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <include layout="@layout/now"/>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        app:cardCornerRadius="15dp">
+
+                    <TextView android:id="@+id/forecast_keypoint"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginVertical="10dp"
+                              android:layout_marginHorizontal="25dp"
+                              android:text="@string/topic"
+                              android:singleLine="true"
+                              android:textColor="@color/text"
+                              android:textSize="16sp"
+                              app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="290dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="15dp"
+                        app:cardCornerRadius="15dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/daily"
+                            android:layout_width="match_parent"
+                            android:layout_height="260dp"
+                            android:layout_marginVertical="10dp"
+                            android:layout_marginHorizontal="25dp"
+                            android:overScrollMode="never"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="15dp"
+                        app:cardCornerRadius="15dp">
+
+                    <pers.gargantua.weather.ui.view.HourlyRecyclerView
+                            android:id="@+id/hourly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:overScrollMode="never"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <include layout="@layout/more"/>
+
+                <include layout="@layout/life"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/dataFrom"
+                          android:textAlignment="center"
+                          android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+        </pers.gargantua.weather.ui.view.MyScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
