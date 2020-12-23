@@ -1,23 +1,27 @@
 package pers.gargantua.weather.ui.place
 
+import android.app.Activity.RESULT_OK
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import pers.gargantua.weather.R
 import pers.gargantua.weather.logic.GlobalData
 import pers.gargantua.weather.logic.GlobalData.toAqi
+import java.util.*
 import kotlin.math.roundToInt
 
 /**
  * @author Gargantua丶
  **/
-class ManagerRecyclerAdapter(val context: Context) :
+class ManagerRecyclerAdapter(val context: AppCompatActivity) :
     RecyclerView.Adapter<ManagerRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -47,24 +51,24 @@ class ManagerRecyclerAdapter(val context: Context) :
             }
         }
 
-        holder.card.setOnLongClickListener {
-            if(position != 0) {
-                AlertDialog.Builder(context).apply {
-                    setMessage("确定删除${holder.placeName.text}？")
-                    setNegativeButton("取消") { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    setPositiveButton("确定") { dialog, _ ->
-                        GlobalData.places.removeAt(position)
-                        notifyDataSetChanged()
-                        dialog.dismiss()
-                    }
-                }.show()
+        holder.card.setOnClickListener {
+            context.apply {
+                setResult(RESULT_OK, Intent().putExtra("pages", position))
+                finish()
             }
-            true
         }
     }
 
     override fun getItemCount(): Int = GlobalData.places.size
+
+    fun onMove(formPosition: Int, toPosition: Int) {
+        Collections.swap(GlobalData.places, formPosition, toPosition)
+        notifyItemMoved(formPosition, toPosition)
+    }
+
+    fun onRemove(position: Int) {
+        GlobalData.places.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
 }

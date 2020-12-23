@@ -6,18 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_place.*
-import kotlinx.android.synthetic.main.fragment_place.*
 import pers.gargantua.weather.R
 
 class PlaceActivity : AppCompatActivity() {
 
-    private val searchFragment by lazy { supportFragmentManager.findFragmentById(R.id.search_fragment) as SearchFragment }
+    private val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
 
     private val managerRecyclerAdapter by lazy { ManagerRecyclerAdapter(this) }
+
+    private val searchRecyclerAdapter: SearchRecyclerAdapter by lazy { SearchRecyclerAdapter(this, viewModel.placeList) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,29 +32,17 @@ class PlaceActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_place)
 
-        supportFragmentManager.beginTransaction().apply {
-            hide(searchFragment)
-            commit()
-        }
-
         searchPlaceEdit.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val content = s.toString()
-                if (content.isNotEmpty()) {
-                    searchFragment.viewModel.searchPlaces(content)
-                    if (searchFragment.isHidden)
-                        supportFragmentManager.beginTransaction().apply {
-                            show(searchFragment)
-                            commit()
-                        }
+                if (content.isNotEmpty() || content != "") {
+                    viewModel.searchPlaces(content)
+                    search_recyclerView.visibility = View.VISIBLE
                 } else {
-                    supportFragmentManager.beginTransaction().apply {
-                        hide(searchFragment)
-                        commit()
-                    }
+                    search_recyclerView.visibility = View.GONE
                     managerRecyclerAdapter.notifyDataSetChanged()
-                    searchFragment.viewModel.placeList.clear()
-                    searchFragment.adapter.notifyDataSetChanged()
+                    viewModel.placeList.clear()
+                    searchRecyclerAdapter.notifyDataSetChanged()
                 }
             }
 
@@ -61,10 +52,36 @@ class PlaceActivity : AppCompatActivity() {
         })
 
         back_button.setOnClickListener {
+            setResult(RESULT_CANCELED)
             finish()
         }
 
         manager_recyclerview.layoutManager = LinearLayoutManager(this)
         manager_recyclerview.adapter = managerRecyclerAdapter
+        ItemTouchHelper(ManagerItemTouchHelper(managerRecyclerAdapter)).attachToRecyclerView(manager_recyclerview)
+
+        search_recyclerView.layoutManager = LinearLayoutManager(this)
+        search_recyclerView.adapter = searchRecyclerAdapter
+
+        viewModel.placeLiveData.observe(this) { result ->
+            val places = result.getOrNull()
+            if (places != null) {
+                viewModel.placeList.clear()
+                viewModel.placeList.addAll(places)
+                searchRecyclerAdapter.notifyDataSetChanged()
+            } else {
+                Toast.makeText(this, "未能查询到任何地点", Toast.LENGTH_SHORT).show()
+                result.exceptionOrNull()?.printStackTrace()
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (searchPlaceEdit.text.toString() != "") {
+            searchPlaceEdit.setText("")
+        } else {
+            setResult(RESULT_CANCELED)
+            finish()
+        }
     }
 }

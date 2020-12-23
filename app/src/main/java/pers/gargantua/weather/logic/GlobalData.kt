@@ -10,7 +10,7 @@ import kotlin.math.roundToInt
  **/
 object GlobalData {
 
-    var places = ArrayList<DaoPlace>()
+    val places = ArrayList<DaoPlace>()
 
     val weekday = listOf(
         R.string.sun,

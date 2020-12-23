@@ -9,7 +9,7 @@ import pers.gargantua.weather.logic.model.Place
 /**
  * @author Gargantua丶
  **/
-class SearchFragmentViewModel : ViewModel() {
+class PlaceViewModel : ViewModel() {
 
     private val searchLiveData = MutableLiveData<String>()
 

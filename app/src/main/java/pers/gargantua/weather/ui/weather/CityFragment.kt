@@ -20,6 +20,7 @@ import pers.gargantua.weather.logic.GlobalData
 import pers.gargantua.weather.logic.GlobalData.toAqi
 import pers.gargantua.weather.logic.GlobalData.toBeaufortScale
 import pers.gargantua.weather.logic.model.*
+import pers.gargantua.weather.ui.view.ViewPagerPageChangeListener
 import kotlin.math.roundToInt
 
 
@@ -74,10 +75,13 @@ class CityFragment(private val position: Int, private val weatherActivity: Weath
             // 监听地理位置数据变化
             weatherActivity.locationListener.place.observe(viewLifecycleOwner) {
                 if ("16" in it.status.toString()) {
-                    weatherActivity.placeName.text = it.name
+                    if (ViewPagerPageChangeListener.position.value == 0)
+                        weatherActivity.placeName.text = it.name
                     viewModel.placeName = it.name
                     viewModel.getWeather(it.location.lng, it.location.lat)
                     if (GlobalData.places.size == 0) {
+                        if(weatherActivity.pages == 0)
+                            weatherActivity.refreshTitleText(it.name)
                         GlobalData.places.add(
                             DaoPlace(
                                 "",
@@ -100,6 +104,8 @@ class CityFragment(private val position: Int, private val weatherActivity: Weath
             }
         } else {
             GlobalData.places[position].apply {
+                Log.d("gargantua-log-id", "${this@CityFragment}-$id")
+                viewModel.id = id
                 viewModel.placeName = name
                 viewModel.getWeather(location.lng, location.lat)
             }
@@ -150,12 +156,11 @@ class CityFragment(private val position: Int, private val weatherActivity: Weath
      */
     private fun refresh(weather: Weather) {
 
-        GlobalData.places[position] = DaoPlace(
-            viewModel.id,
-            viewModel.placeName,
-            viewModel.getLocationAtVM(),
-            viewModel.weather
-        )
+        GlobalData.places[position].apply {
+            name = viewModel.placeName
+            location = viewModel.getLocationAtVM()
+            this.weather = weather
+        }
 
         Log.d("gargantua-log", "fragment data refresh start: position - $position")
 

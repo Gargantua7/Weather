@@ -18,12 +18,12 @@ import pers.gargantua.weather.logic.model.Weather
 /**
  * @author Gargantua丶
  **/
-class WeatherViewModel: ViewModel() {
+class WeatherViewModel : ViewModel() {
 
     fun save() = Repository.save()
 
     fun restoreSave() {
         if (Repository.isSaved())
-        GlobalData.places = Repository.getSave() as ArrayList<DaoPlace>
+            Repository.getSave()
     }
 }

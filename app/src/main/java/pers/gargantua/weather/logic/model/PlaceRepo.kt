@@ -9,8 +9,8 @@ data class PlaceRepo(val status: String, val places: List<Place>)
 
 data class DaoPlace(
     val id: String,
-    val name: String,
-    val location: Location,
+    var name: String,
+    var location: Location,
     var weather: Weather? = null
 )
 

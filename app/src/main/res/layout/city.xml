@@ -37,9 +37,12 @@
                               android:layout_marginVertical="10dp"
                               android:layout_marginHorizontal="25dp"
                               android:text="@string/topic"
-                              android:singleLine="true"
                               android:textColor="@color/text"
                               android:textSize="16sp"
+                              android:ellipsize="marquee"
+                              android:singleLine="true"
+                              android:focusable="true"
+                              android:marqueeRepeatLimit="-1"
                               app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </com.google.android.material.card.MaterialCardView>

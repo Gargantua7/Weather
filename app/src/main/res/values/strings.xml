@@ -3,11 +3,11 @@
     <string name="enter_place">输入地址</string>
     <string name="cancel">取消</string>
     <string name="background">background</string>
-    <string name="place_name">东莞</string>
+    <string name="place_name">无法获取定位</string>
     <string name="icon">图标</string>
     <string name="temperature">25℃</string>
     <string name="sunny">晴</string>
-    <string name="temp_num">25</string>
+    <string name="temp_num">--</string>
     <string name="temp_symbol">℃</string>
     <string name="aqi">空气</string>
     <string name="day_text">今天 · 晴</string>

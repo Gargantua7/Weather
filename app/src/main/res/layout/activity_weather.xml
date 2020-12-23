@@ -18,12 +18,15 @@
             android:paddingTop="40dp"
             android:paddingBottom="15dp"
             android:paddingHorizontal="70dp"
-            android:singleLine="true"
             android:text="@string/place_name"
-            android:textColor="#FFF"
+            android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textAlignment="center"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:focusable="true"
+            android:marqueeRepeatLimit="-1"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <Button android:id="@+id/list_button"

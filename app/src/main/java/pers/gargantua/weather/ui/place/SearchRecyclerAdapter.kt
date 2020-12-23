@@ -1,6 +1,7 @@
 package pers.gargantua.weather.ui.place
 
-import android.content.Intent
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import pers.gargantua.weather.R
 import pers.gargantua.weather.WeatherApplication
 import pers.gargantua.weather.logic.GlobalData
@@ -17,13 +17,12 @@ import pers.gargantua.weather.logic.model.DaoPlace
 import pers.gargantua.weather.logic.model.Location
 import pers.gargantua.weather.logic.model.Place
 import pers.gargantua.weather.logic.model.Sky
-import pers.gargantua.weather.ui.weather.WeatherActivity
 import kotlin.math.roundToInt
 
 /**
  * @author Gargantua丶
  **/
-class SearchRecyclerAdapter(private val fragment: SearchFragment, private val placeList: List<Place>) :
+class SearchRecyclerAdapter(private val context: Context, private val placeList: List<Place>) :
     RecyclerView.Adapter<SearchRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -65,6 +64,7 @@ class SearchRecyclerAdapter(private val fragment: SearchFragment, private val pl
                 }
             }
 
+            add.background = WeatherApplication.context.getDrawable(R.drawable.add_circle)
             for(p in GlobalData.places) {
                 if(place.id == p.id) {
                     add.background = WeatherApplication.context.getDrawable(R.drawable.check)
@@ -75,19 +75,23 @@ class SearchRecyclerAdapter(private val fragment: SearchFragment, private val pl
             add.setOnClickListener {
                 for(p in GlobalData.places) {
                     if(place.id == p.id) {
-                        Toast.makeText(fragment.activity, "城市已在列表中", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "城市已在列表中", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
                 }
+
                 GlobalData.places.add(
                     DaoPlace(
-                        place.id,
+                        place.id.apply{
+                            Log.d("gargantua-log-id", "${this@SearchRecyclerAdapter}-$this")
+                        },
                         name,
                         Location(place.location.lng, place.location.lat),
                         place.weather
                     )
                 )
-                Toast.makeText(fragment.activity, "城市添加成功", Toast.LENGTH_SHORT).show()
+                Log.d("gargantua-log-id", "$this-${GlobalData.places[GlobalData.places.size - 1].id}")
+                Toast.makeText(context, "城市添加成功", Toast.LENGTH_SHORT).show()
                 add.background = WeatherApplication.context.getDrawable(R.drawable.check)
             }
         }
