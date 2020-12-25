@@ -8,7 +8,7 @@
         android:background="@drawable/bg_clear_day">
 
     <TextView
-            android:id="@+id/currentTemp"
+            android:id="@+id/now_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/temp_num"
@@ -19,38 +19,36 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView android:id="@+id/temp_symbol"
+    <TextView android:id="@+id/now_temp_symbol"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingTop="15dp"
               android:text="@string/temp_symbol"
               android:textColor="#fff"
               android:textSize="36sp"
-              app:layout_constraintTop_toTopOf="@id/currentTemp"
-              app:layout_constraintLeft_toRightOf="@id/currentTemp"/>
+              app:layout_constraintTop_toTopOf="@id/now_temp"
+              app:layout_constraintLeft_toRightOf="@id/now_temp"/>
 
     <TextView
-            android:id="@+id/currentSky"
+            android:id="@+id/now_sky"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textStyle="bold"
             android:textColor="#fff"
             android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="@id/temp_symbol"
-            app:layout_constraintBaseline_toBaselineOf="@id/currentTemp"/>
+            app:layout_constraintLeft_toLeftOf="@id/now_temp_symbol"
+            app:layout_constraintBaseline_toBaselineOf="@id/now_temp"/>
 
-    <TextView android:id="@+id/aqi"
+    <TextView android:id="@+id/now_aqi"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="@string/aqi"
               android:textStyle="bold"
               android:textColor="#fff"
               android:textSize="16sp"
-              app:layout_constraintTop_toBottomOf="@id/currentTemp"
+              app:layout_constraintTop_toBottomOf="@id/now_temp"
               app:layout_constraintLeft_toLeftOf="parent"
               app:layout_constraintRight_toRightOf="parent"/>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

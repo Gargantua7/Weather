@@ -19,9 +19,10 @@
 
     <string name="aqi_great">优</string>
     <string name="aqi_good">良</string>
-    <string name="aqi_light">轻度污染</string>
-    <string name="aqi_moderate">中度污染</string>
-    <string name="aqi_severe">重度污染</string>
+    <string name="aqi_light">轻度</string>
+    <string name="aqi_moderate">中度</string>
+    <string name="aqi_severe">重度</string>
+    <string name="aqi_pollution">污染</string>
 
     <string name="sun">周日</string>
     <string name="mon">周一</string>
@@ -78,7 +79,7 @@
     <string name="carWashing3">较不适宜</string>
     <string name="carWashing4">不适宜</string>
 
-    <string name="dataFrom">天气数据来源于 彩云天气</string>
+    <string name="dataFrom">天气数据来源于 彩云天气\nDesign By Gargantua7</string>
     <string name="topic">如果你看到了本提示，请下拉刷新获取数据</string>
     <string name="city_manager">城市管理</string>
 </resources>

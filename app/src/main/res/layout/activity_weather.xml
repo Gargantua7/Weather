@@ -6,13 +6,13 @@
         android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/weather_view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"/>
 
     <TextView
-            android:id="@+id/placeName"
+            android:id="@+id/weather_place_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="40dp"
@@ -29,7 +29,7 @@
             android:marqueeRepeatLimit="-1"
             app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button android:id="@+id/list_button"
+    <Button android:id="@+id/weather_list_button"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="40dp"

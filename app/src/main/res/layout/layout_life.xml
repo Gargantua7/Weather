@@ -12,98 +12,98 @@
             android:layout_margin="20dp">
 
         <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/line"
+                android:id="@+id/life_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5"/>
 
-        <ImageView style="@style/LifeIcon"
-                   android:id="@+id/coldrisk_icon"
+        <ImageView style="@style/life_icon"
+                   android:id="@+id/life_coldrisk_icon"
                    android:src="@drawable/ic_coldrisk"
                    app:layout_constraintTop_toTopOf="parent"
                    app:layout_constraintLeft_toLeftOf="parent"
-                   app:layout_constraintRight_toRightOf="@id/line"
+                   app:layout_constraintRight_toRightOf="@id/life_line"
                    android:contentDescription="@string/icon"/>
 
-        <ImageView style="@style/LifeIcon"
+        <ImageView style="@style/life_icon"
                    android:src="@drawable/ic_dressing"
                    app:layout_constraintTop_toTopOf="parent"
-                   app:layout_constraintLeft_toLeftOf="@id/line"
+                   app:layout_constraintLeft_toLeftOf="@id/life_line"
                    app:layout_constraintRight_toRightOf="parent"
                    android:contentDescription="@string/icon"/>
 
-        <TextView style="@style/LifeText"
-                  android:id="@+id/coldrisk"
+        <TextView style="@style/life_text"
+                  android:id="@+id/life_coldrisk"
                   android:text="@string/coldrisk"
-                  app:layout_constraintTop_toBottomOf="@id/coldrisk_icon"
+                  app:layout_constraintTop_toBottomOf="@id/life_coldrisk_icon"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="@id/line"/>
+                  app:layout_constraintRight_toRightOf="@id/life_line"/>
 
-        <TextView style="@style/LifeText"
+        <TextView style="@style/life_text"
                   android:id="@+id/dressing"
                   android:text="@string/dressing"
-                  app:layout_constraintTop_toBottomOf="@id/coldrisk_icon"
-                  app:layout_constraintLeft_toLeftOf="@id/line"
+                  app:layout_constraintTop_toBottomOf="@id/life_coldrisk_icon"
+                  app:layout_constraintLeft_toLeftOf="@id/life_line"
                   app:layout_constraintRight_toRightOf="parent"/>
 
-        <TextView style="@style/LifeTopic"
-                  android:id="@+id/topic"
+        <TextView style="@style/life_topic"
+                  android:id="@+id/life_topic"
                   android:text="@string/coldrisk"
-                  app:layout_constraintTop_toBottomOf="@id/coldrisk"
+                  app:layout_constraintTop_toBottomOf="@id/life_coldrisk"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="@id/line"/>
+                  app:layout_constraintRight_toRightOf="@id/life_line"/>
 
-        <TextView style="@style/LifeTopic"
+        <TextView style="@style/life_topic"
                   android:text="@string/dressing"
-                  app:layout_constraintTop_toBottomOf="@id/coldrisk"
-                  app:layout_constraintLeft_toLeftOf="@id/line"
+                  app:layout_constraintTop_toBottomOf="@id/life_coldrisk"
+                  app:layout_constraintLeft_toLeftOf="@id/life_line"
                   app:layout_constraintRight_toRightOf="parent"/>
 
-        <TextView android:id="@+id/stuffing"
+        <TextView android:id="@+id/life_stuffing"
                   android:layout_width="match_parent"
                   android:layout_height="20dp"
-                  app:layout_constraintTop_toBottomOf="@id/topic"/>
+                  app:layout_constraintTop_toBottomOf="@id/life_topic"/>
 
-        <ImageView style="@style/LifeIcon"
-                   android:id="@+id/ultraviolet_icon"
+        <ImageView style="@style/life_icon"
+                   android:id="@+id/life_ultraviolet_icon"
                    android:src="@drawable/ic_ultraviolet"
-                   app:layout_constraintTop_toBottomOf="@id/stuffing"
+                   app:layout_constraintTop_toBottomOf="@id/life_stuffing"
                    app:layout_constraintLeft_toLeftOf="parent"
-                   app:layout_constraintRight_toRightOf="@id/line"
+                   app:layout_constraintRight_toRightOf="@id/life_line"
                    android:contentDescription="@string/icon"/>
 
-        <ImageView style="@style/LifeIcon"
+        <ImageView style="@style/life_icon"
                    android:src="@drawable/ic_carwashing"
-                   app:layout_constraintTop_toBottomOf="@id/stuffing"
-                   app:layout_constraintLeft_toLeftOf="@id/line"
+                   app:layout_constraintTop_toBottomOf="@id/life_stuffing"
+                   app:layout_constraintLeft_toLeftOf="@id/life_line"
                    app:layout_constraintRight_toRightOf="parent"
                    android:contentDescription="@string/icon"/>
 
-        <TextView style="@style/LifeText"
-                  android:id="@+id/ultraviolet"
+        <TextView style="@style/life_text"
+                  android:id="@+id/life_ultraviolet"
                   android:text="@string/ultraviolet"
-                  app:layout_constraintTop_toBottomOf="@id/ultraviolet_icon"
+                  app:layout_constraintTop_toBottomOf="@id/life_ultraviolet_icon"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="@id/line"/>
+                  app:layout_constraintRight_toRightOf="@id/life_line"/>
 
-        <TextView style="@style/LifeText"
-                  android:id="@+id/carwashing"
+        <TextView style="@style/life_text"
+                  android:id="@+id/life_carwashing"
                   android:text="@string/carwashing"
-                  app:layout_constraintTop_toBottomOf="@id/ultraviolet_icon"
-                  app:layout_constraintLeft_toLeftOf="@id/line"
+                  app:layout_constraintTop_toBottomOf="@id/life_ultraviolet_icon"
+                  app:layout_constraintLeft_toLeftOf="@id/life_line"
                   app:layout_constraintRight_toRightOf="parent"/>
 
-        <TextView style="@style/LifeTopic"
+        <TextView style="@style/life_topic"
                   android:text="@string/ultraviolet"
-                  app:layout_constraintTop_toBottomOf="@id/ultraviolet"
+                  app:layout_constraintTop_toBottomOf="@id/life_ultraviolet"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="@id/line"/>
+                  app:layout_constraintRight_toRightOf="@id/life_line"/>
 
-        <TextView style="@style/LifeTopic"
+        <TextView style="@style/life_topic"
                   android:text="@string/carwashing"
-                  app:layout_constraintTop_toBottomOf="@id/ultraviolet"
-                  app:layout_constraintLeft_toLeftOf="@id/line"
+                  app:layout_constraintTop_toBottomOf="@id/life_ultraviolet"
+                  app:layout_constraintLeft_toLeftOf="@id/life_line"
                   app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

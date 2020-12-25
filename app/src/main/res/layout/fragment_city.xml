@@ -6,13 +6,13 @@
         android:layout_height="match_parent">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefresh"
+            android:id="@+id/city_swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/clear_day">
 
         <pers.gargantua.weather.ui.view.MyScrollView
-                android:id="@+id/weatherLayout"
+                android:id="@+id/city_scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:overScrollMode="never"
@@ -23,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                <include layout="@layout/now"/>
+                <include layout="@layout/layout_now"/>
 
                 <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -31,13 +31,13 @@
                         android:layout_marginHorizontal="15dp"
                         app:cardCornerRadius="15dp">
 
-                    <TextView android:id="@+id/forecast_keypoint"
+                    <TextView android:id="@+id/city_forecast_keypoint"
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
                               android:layout_marginVertical="10dp"
                               android:layout_marginHorizontal="25dp"
                               android:text="@string/topic"
-                              android:textColor="@color/text"
+                              android:textColor="@android:color/black"
                               android:textSize="16sp"
                               android:ellipsize="marquee"
                               android:singleLine="true"
@@ -55,7 +55,7 @@
                         app:cardCornerRadius="15dp">
 
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/daily"
+                            android:id="@+id/city_daily_recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
                             android:layout_marginVertical="10dp"
@@ -72,7 +72,7 @@
                         app:cardCornerRadius="15dp">
 
                     <pers.gargantua.weather.ui.view.HourlyRecyclerView
-                            android:id="@+id/hourly"
+                            android:id="@+id/city_hourly_recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="20dp"
@@ -80,9 +80,9 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <include layout="@layout/more"/>
+                <include layout="@layout/layout_more"/>
 
-                <include layout="@layout/life"/>
+                <include layout="@layout/layout_life"/>
 
                 <TextView android:layout_width="match_parent"
                           android:layout_height="wrap_content"

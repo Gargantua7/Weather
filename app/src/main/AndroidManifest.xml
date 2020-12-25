@@ -27,7 +27,7 @@
                 android:enabled="true"
                 android:process=":remote"/>
 
-        <activity android:name=".ui.weather.WeatherActivity">
+        <activity android:name=".WeatherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

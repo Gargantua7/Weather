@@ -10,7 +10,9 @@ import kotlin.math.abs
 
 
 /**
+ * 自定义 RecyclerView 控件，用于解决 ViewPager 和 RecyclerView 事件冲突
  * @author Gargantua丶
+ * @see RecyclerView
  **/
 class HourlyRecyclerView : RecyclerView {
 
@@ -41,6 +43,7 @@ class HourlyRecyclerView : RecyclerView {
                 val y = e.y.toInt()
                 val x = e.x.toInt()
                 if (abs(y - moveY) > touchSlop && abs(x - moveX) < touchSlop * 2) {
+                    // 使祖先控件 (ViewPager) 不要拦截此次滑动事件
                     parent.requestDisallowInterceptTouchEvent(false)
                 } else {
                     parent.requestDisallowInterceptTouchEvent(true)

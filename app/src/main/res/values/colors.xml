@@ -3,9 +3,7 @@
     <color name="colorPrimary">#6699FF</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="white">#FFF</color>
     <color name="roundedRectangle">#10000000</color>
-    <color name="text">#000</color>
 
     <color name="clear_day">#4F99E0</color>
     <color name="clear_night">#4962c7</color>

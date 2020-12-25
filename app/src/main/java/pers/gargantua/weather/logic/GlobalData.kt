@@ -1,17 +1,21 @@
 package pers.gargantua.weather.logic
 
 import pers.gargantua.weather.R
+import pers.gargantua.weather.WeatherApplication
 import pers.gargantua.weather.logic.model.DaoPlace
 import pers.gargantua.weather.logic.model.Sky
 import kotlin.math.roundToInt
 
 /**
+ * 仓库层 - 全局数据/方法类
  * @author Gargantua丶
  **/
 object GlobalData {
 
+    /** 全局地点天气数据 */
     val places = ArrayList<DaoPlace>()
 
+    /** 获取当日是周几的字符串资源，起始为周日 */
     val weekday = listOf(
         R.string.sun,
         R.string.mon,
@@ -22,7 +26,8 @@ object GlobalData {
         R.string.sat
     )
 
-    val windDirection = listOf(
+    /** 风向字符串资源 */
+    private val windDirection = listOf(
         R.string.wind_north,
         R.string.wind_north_east,
         R.string.wind_east,
@@ -33,7 +38,14 @@ object GlobalData {
         R.string.wind_west_north
     )
 
+    /** 根据风向角度直接获取字符串资源 */
+    fun getWindDirection(direction: Double): Int {
+        return windDirection[(direction.roundToInt() + 20) / 40 % 8]
+    }
+
+    /** 紫外线强度字符串资源，为配合 API 返回体，起始下标为 1 */
     val ultraviolet = listOf(
+        0,
         R.string.daily_ultraviolet1,
         R.string.daily_ultraviolet2,
         R.string.daily_ultraviolet3,
@@ -41,6 +53,7 @@ object GlobalData {
         R.string.daily_ultraviolet5
     )
 
+    /** 穿衣指数字符串资源 */
     val dressing = listOf(
         R.string.dressing0,
         R.string.dressing1,
@@ -53,20 +66,28 @@ object GlobalData {
         R.string.dressing8
     )
 
+    /** 易感程度字符串资源，为配合 API 返回体，起始下标为 1 */
     val coldRisk = listOf(
+        0,
         R.string.coldRisk1,
         R.string.coldRisk2,
         R.string.coldRisk3,
         R.string.coldRisk4
     )
 
+    /** 洗车指数字符串资源，为配合 API 返回体，起始下标为 1 */
     val carWashing = listOf(
+        0,
         R.string.carWashing1,
         R.string.carWashing2,
         R.string.carWashing3,
         R.string.carWashing4
     )
 
+    /**
+     * 天相静态数据
+     * @see Sky
+     */
     val sky = mapOf(
         "CLEAR_DAY" to Sky("晴", R.drawable.ic_clear_day, R.drawable.bg_clear_day, R.color.clear_day),
         "CLEAR_NIGHT" to Sky("晴", R.drawable.ic_clear_night, R.drawable.bg_clear_night, R.color.clear_night),
@@ -102,6 +123,9 @@ object GlobalData {
         "DUST" to Sky("浮尘", R.drawable.ic_fog, R.drawable.bg_fog, R.color.fog)
     )
 
+    /**
+     * 将风速 (m/s) 转换为蒲福风力等级
+     */
     fun Double.toBeaufortScale(): Int =
         when (roundToInt()) {
             0 -> 0
@@ -124,13 +148,29 @@ object GlobalData {
             else -> 17
         }
 
-    fun Double.toAqi(): String =
-        when (roundToInt()) {
-            in 0..50 -> "优"
-            in 50..100 -> "良"
-            in 100..150 -> "轻度污染"
-            in 150..200 -> "中度污染"
-            else -> "重度污染"
+    /** 空气指数简短描述 */
+    const val AQI_SHORT_DESCRIPTION = 0
+    /** 空气指数详细描述 */
+    const val AQI_LONG_DESCRIPTION = 1
+    /**
+     * 将空气指数转为语言描述的字符串
+     * @param mode 返回描述的详细度，值为 [AQI_SHORT_DESCRIPTION] 或 [AQI_LONG_DESCRIPTION] (默认)
+     */
+    fun Double.toAqi(mode: Int = AQI_LONG_DESCRIPTION): String =
+        WeatherApplication.context.run {
+            getString(
+                when (roundToInt()) {
+                    in 0..50 -> R.string.aqi_great
+                    in 50..100 -> R.string.aqi_good
+                    in 100..150 -> R.string.aqi_light
+                    in 150..200 -> R.string.aqi_moderate
+                    else -> R.string.aqi_severe
+                }
+            ) + if (mode == AQI_LONG_DESCRIPTION)
+                when (roundToInt()) {
+                    in 0..100 -> ""
+                    else -> getString(R.string.aqi_pollution)
+                }
+            else ""
         }
-
 }

@@ -4,11 +4,15 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 /**
+ * 彩云 API 返回体天气信息数据类
  * @author Gargantua丶
  **/
 data class Weather(
+    /** 请求返回体状态，正常返回值为 'ok' */
     val status: String,
+    /** 当前城市所在时区，用于在 UI 层小时级预报正确展示当地时间 */
     val timezone: String,
+    /** 返回结果正文 */
     val result: Result
 ) {
     data class Result(
@@ -47,7 +51,7 @@ data class Weather(
     /**
      * 未来 48 小时的天气数据类
      *
-     * 若无查看 datetime 的值的必要，本类提供了 [get] 方法可以直接获取某一时间的所有提供的天气数据
+     * 建议使用本类提供的 [get] 操作方法可以直接获取某一时间的所有提供的天气数据
      */
     data class Hourly(
         val status: String,
@@ -71,6 +75,8 @@ data class Weather(
          * ——————————————————————
          *
          * key - value - value type
+         *
+         * time - 当前本地时间 - [Date]
          *
          * temp - 温度 - [Double]
          *
@@ -98,7 +104,7 @@ data class Weather(
     /**
      * 未来 5 天的天气数据类
      *
-     * 若无查看 datetime 的值的必要，本类提供了 [get] 方法可以直接获取某一天的所有提供的天气数据
+     * 建议本类提供的 [get] 操作方法可以直接获取某一天的所有提供的天气数据
      */
     data class Daily(
         val status: String,
@@ -124,6 +130,8 @@ data class Weather(
          *
          * key - value - value type
          *
+         * time - 当前本地时间 - [Date]
+         *
          * maxTemp - 最高温度 - [Double]
          *
          * minTemp - 最低温度 - [Double]
@@ -134,7 +142,7 @@ data class Weather(
          *
          * —————————生活指数—————————
          *
-         * Int 转 String 解码请参考 [StaticData]
+         * Int 转 String 解码请参考 [pers.gargantua.weather.logic.GlobalData.toAqi]
          *
          * coldRisk - 易感程度 - [Int]
          *
@@ -164,7 +172,7 @@ data class Weather(
     data class Wind(
         /** 风速 - m/s */
         val speed: Double,
-        /** 风向 - 从北顺时针(0~360°) */
+        /** 风向 - 从北顺时针(0~360°) 获取风向字符串资源见 [pers.gargantua.weather.logic.GlobalData]*/
         val direction: Double
     )
 
@@ -186,31 +194,46 @@ data class Weather(
         val aqi: AQI
     )
 
-    data class AQI(val chn: Double, val date: Date)
+    /** 空气指数 */
+    data class AQI(/** 国标数据 */val chn: Double, val date: Date)
 
+    /** 生活指数数值 */
     data class LifeIndex(val index: Int)
 
+    /** 生活指数 */
     data class Life(
+        /** 紫外线强度 */
         val ultraviolet: List<LifeIndex>,
+        /** 洗车指数 */
         val carWashing: List<LifeIndex>,
+        /** 穿衣指数 */
         val dressing: List<LifeIndex>,
+        /** 易感程度 */
         val coldRisk: List<LifeIndex>
     )
 
+    /** 小时级预报温度数据 */
     data class HourTemp(val value: Double, val datetime: Date)
 
+    /** 天级预报温度数据 */
     data class DailyTemp(val max: Double, val min: Double, val date: Date)
 
+
+    /** 天相数据 */
     data class Skycon(val value: String, val datetime: Date)
 
+    /** 小时级预报的空气指数 */
     data class HourlyAQI(val value: AQI, val datetime: Date)
 
+    /** 小时级预报的空气指数列表 */
     data class HourlyAirQuality(val aqi: List<HourlyAQI>) {
         operator fun get(index: Int) = aqi[index].value.chn
     }
 
+    /** 天级预报的空气指数 */
     data class DailyAQI(val avg: AQI, val date: Date)
 
+    /** 天级预报的空气指数列表 */
     data class DailyAirQuality(val aqi: List<DailyAQI>) {
         operator fun get(index: Int) = aqi[index].avg.chn
     }

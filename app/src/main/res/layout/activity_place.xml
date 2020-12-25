@@ -20,7 +20,7 @@
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button android:id="@+id/back_button"
+    <Button android:id="@+id/place_back_button"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="40dp"
@@ -31,7 +31,7 @@
             style="?android:attr/borderlessButtonStyle"/>
 
     <EditText
-            android:id="@+id/searchPlaceEdit"
+            android:id="@+id/place_search_edit"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -42,24 +42,24 @@
             android:background="@drawable/rounded_rectangle"
             android:importantForAutofill="no"
             android:inputType="text"
-            app:layout_constraintTop_toBottomOf="@id/back_button"/>
+            app:layout_constraintTop_toBottomOf="@id/place_back_button"/>
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/manager_recyclerview"
+            android:id="@+id/manager_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/searchPlaceEdit"
+            app:layout_constraintTop_toBottomOf="@id/place_search_edit"
             app:layout_constraintBottom_toBottomOf="parent"
             android:overScrollMode="never"/>
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_recyclerView"
+            android:id="@+id/search_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/searchPlaceEdit"
+            app:layout_constraintTop_toBottomOf="@id/place_search_edit"
             app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="gone"
             android:overScrollMode="never"/>
