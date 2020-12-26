@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 /**
+ * 彩云天气 API 天气查询接口
  * @author Gargantua丶
  **/
 interface WeatherService {

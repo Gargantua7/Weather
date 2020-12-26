@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
+ * 彩云天气 API 地点查询接口
  * @author Gargantua丶
  **/
 interface PlaceService {

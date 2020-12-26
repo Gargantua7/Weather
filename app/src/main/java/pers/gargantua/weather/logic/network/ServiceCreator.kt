@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 /**
+ * Retrofit 构建器
  * @author Gargantua丶
  **/
 object ServiceCreator {

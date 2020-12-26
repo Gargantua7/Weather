@@ -36,13 +36,13 @@
                android:contentDescription="@string/icon"/>
 
     <ImageView android:id="@+id/hourly_wind_direction"
-               android:layout_width="15dp"
-               android:layout_height="15dp"
+               android:layout_width="12dp"
+               android:layout_height="12dp"
                android:src="@drawable/navigation"
                android:rotation="0"
-               app:layout_constraintTop_toBottomOf="@id/hourly_weather_icon"
+               app:layout_constraintBottom_toBottomOf="@id/hourly_wind_speed"
                app:layout_constraintRight_toLeftOf="@id/hourly_wind_speed"
-               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintLeft_toLeftOf="@id/hourly_aqi"
                android:contentDescription="@string/icon"/>
 
     <TextView android:id="@+id/hourly_wind_speed"
@@ -53,8 +53,8 @@
               android:textColor="@android:color/black"
               android:textAlignment="center"
               app:layout_constraintTop_toBottomOf="@id/hourly_weather_icon"
-              app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toRightOf="@id/hourly_wind_direction"/>
+              app:layout_constraintRight_toRightOf="@id/hourly_aqi"
+              app:layout_constraintLeft_toRightOf="@id/hourly_wind_direction"/>
 
     <TextView android:id="@+id/hourly_aqi"
               android:layout_width="wrap_content"
