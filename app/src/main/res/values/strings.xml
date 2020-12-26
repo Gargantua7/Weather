@@ -79,7 +79,7 @@
     <string name="carWashing3">较不适宜</string>
     <string name="carWashing4">不适宜</string>
 
-    <string name="dataFrom">天气数据来源于 彩云天气\nDesign By Gargantua7</string>
+    <string name="dataFrom">天气数据来源于 彩云天气\nDesign by Gargantua7</string>
     <string name="topic">如果你看到了本提示，请下拉刷新获取数据</string>
     <string name="city_manager">城市管理</string>
 </resources>
